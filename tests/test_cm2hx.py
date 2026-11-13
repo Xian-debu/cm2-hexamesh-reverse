@@ -49,7 +49,7 @@ class RingsTest(unittest.TestCase):
 
 
 class Q4T3Test(unittest.TestCase):
-    DATA = os.environ.get("CM2_Q4T3_DIR", "/root/projects/逆向1/work/demo-data/data")
+    DATA = os.environ.get("CM2_Q4T3_DIR", os.path.join(ROOT, "data"))
 
     def test_surface_closure(self):
         path = os.path.join(self.DATA, "cast_q4t3.dat")
@@ -103,8 +103,10 @@ class FormatTest(unittest.TestCase):
             bdf_path = os.path.join(tmp, "w.bdf")
             write_medit(mesh_path, m)
             write_bdf(bdf_path, m)
-            mesh_text = open(mesh_path, encoding="latin-1").read()
-            bdf_text = open(bdf_path, encoding="latin-1").read()
+            with open(mesh_path, encoding="latin-1") as fh:
+                mesh_text = fh.read()
+            with open(bdf_path, encoding="latin-1") as fh:
+                bdf_text = fh.read()
         self.assertNotIn("Prisms", mesh_text)
         self.assertNotIn("Wedges", mesh_text)
         self.assertIn("CPENTA", bdf_text)

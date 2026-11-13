@@ -1,0 +1,22 @@
+# NOTICE
+
+This repository is an independent reimplementation of the observable behavior of
+the CM2 HexaMesh Iso 5.7 evaluation demo. It contains no vendor source code,
+no vendor binaries (EXE/DLL), no input .dat files, and no decompiler output.
+
+The implementation was written from black-box execution results and static
+analysis of the demo executable. It is not a recovery of the original C++
+source, and it is not a strict clean-room implementation: the authors did
+inspect disassembly and decompiled pseudocode of the demo and its DLLs in order
+to understand file formats and behavior.
+
+CM2, CM2 MeshTools, HexaMesh and related names are trademarks or registered
+trademarks of their respective owners. This project is not affiliated with,
+endorsed by, or sponsored by the vendor. The vendor demo and its data remain
+governed by the vendor's evaluation license; nothing in this repository grants
+rights to them.
+
+The MIT license in this repository applies only to the original code and
+documentation authored here. Oracle facts recorded in evidence/ (file sizes,
+line counts, checksums, element counts) are measurements, not copies of vendor
+material.

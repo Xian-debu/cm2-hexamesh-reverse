@@ -1,0 +1,30 @@
+name: tests
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Unit tests
+        run: python3 -m unittest discover -s tests -v
+      - name: CUBE demo
+        run: |
+          python3 -m cm2hx.demo cube /tmp/cm2-cube
+          test -s /tmp/cm2-cube/TMSHHX01.mesh
+          test -s /tmp/cm2-cube/TMSHHX01.bdf
+          test -s /tmp/cm2-cube/TMSHHX01.neu
+      - name: RINGS demo
+        run: |
+          python3 -m cm2hx.demo rings /tmp/cm2-rings
+          test -s /tmp/cm2-rings/TMSHHX10.mesh
+          test -s /tmp/cm2-rings/TMSHHX10.bdf
+          test -s /tmp/cm2-rings/TMSHHX10.neu
+      - name: No-data test script
+        run: ./tests/run_all.sh
