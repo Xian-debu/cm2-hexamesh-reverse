@@ -71,7 +71,8 @@ def write_medit(path, mesh):
         fh.write(f"{len(mesh.nodes)}\r\n")
         for p in mesh.nodes:
             fh.write(f"{fmt_e(p[0])} {fmt_e(p[1])} {fmt_e(p[2])} 0\r\n")
-        for kind in ("H8", "W6", "P5", "TH4"):
+        # The vendor MEDIT writer drops wedges (W6); keep that quirk.
+        for kind in ("H8", "P5", "TH4"):
             cells = [v for k, v in mesh.cells if k == kind]
             if not cells:
                 continue

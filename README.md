@@ -30,7 +30,7 @@ cd reverse/cm2-hexamesh
 python3 -m cm2hx.demo cube  /tmp/out        # TMSHHX01
 python3 -m cm2hx.demo rings /tmp/out        # TMSHHX10
 python3 -m cm2hx.demo q4t3  /path/cast_q4t3.dat /tmp/out
-./tests/run_all.sh                          # 8 个单测 + 结构校验
+./tests/run_all.sh                          # 9 个单测 + 结构校验
 ```
 
 校验器默认读取私有工作目录的 q4t3 输入；可用 `CM2_Q4T3_DIR` 覆盖：
